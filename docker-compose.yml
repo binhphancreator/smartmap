@@ -1,0 +1,54 @@
+version: "3.7"
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    image: smartmap
+    container_name: smartmap-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+      - ./storage/logs:/usr/local/var/log
+    networks:
+      - smartmap_network
+    
+  nginx:
+    image: nginx:alpine
+    container_name: smartmap-nginx
+    restart: unless-stopped
+    ports:
+      - 8087:80
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx:/etc/nginx/conf.d
+      - ./storage/logs/nginx:/var/log/nginx
+    networks:
+      - smartmap_network
+  db:
+    image: mariadb
+    container_name: smartmap-db
+    restart: unless-stopped
+    ports:
+      - 33001:3306
+    environment:
+      MYSQL_DATABASE: smartmap
+      MYSQL_ROOT_PASSWORD: smartmap
+      MYSQL_PASSWORD: smartmap
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    working_dir: /var/www/
+    volumes:
+      - dbdata:/var/lib/mysql/
+      - ./:/var/www
+    networks:
+      - smartmap_network
+
+networks:
+  smartmap_network:
+    driver: bridge
+
+volumes:
+  dbdata:
+    driver: local
