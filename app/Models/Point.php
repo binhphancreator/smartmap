@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Point extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function group()
+    {
+        return $this->belongsTo('App\Models\Group');
+    }
 }
