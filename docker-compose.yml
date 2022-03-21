@@ -44,6 +44,15 @@ services:
       - ./:/var/www
     networks:
       - smartmap_network
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8086:80
+    environment:
+      - PMA_ARBITRARY=1
+    networks:
+      - smartmap_network
 
 networks:
   smartmap_network:
