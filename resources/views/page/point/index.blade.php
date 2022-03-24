@@ -26,8 +26,9 @@
       <thead>
         <tr>
           <th style="width: 5%" scope="col"></th>
+          <th style="width: 10%" scope="col">ID</th>
           <th style="width: 20%" scope="col">Tên</th>
-          <th style="width: 40%" scope="col">Ảnh</th>
+          <th style="width: 30%" scope="col">Ảnh</th>
           <th style="width: 10%" scope="col">Đơn vị</th>
           <th style="width: 10%" scope="col">Khối nhà</th>
           <th style="width: 10%" scope="col">Tầng</th>
@@ -39,6 +40,7 @@
         @foreach ($points as $point)
         <tr>
           <th style="vertical-align: middle;" scope="row">{{$loop->index + 1 }}</th>
+          <td style="vertical-align: middle;">{{$point->point_id}}</td>
           <td style="vertical-align: middle;">{{$point->name}}</td>
           <td style="vertical-align: middle; width: 40%;">
             @if($point->picture)

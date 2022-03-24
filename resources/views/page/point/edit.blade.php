@@ -29,6 +29,13 @@
       @method('PUT')
       @csrf
       <div class="mb-3 col-12 col-md-6">
+        <label class="form-label">ID địa điểm</label>
+        <input name="point_id" type="text" class="form-control" value="{{$point->point_id}}">
+        @if ($errors->first('point_id'))
+        <div><small class="text-danger">{{ $errors->first('point_id') }}</small></div>
+        @endif
+      </div>
+      <div class="mb-3 col-12 col-md-6">
         <label class="form-label">Tên địa điểm</label>
         <input name="name" type="text" class="form-control" value="{{$point->name}}">
         @if ($errors->first('name'))

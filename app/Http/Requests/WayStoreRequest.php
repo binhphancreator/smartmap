@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class PointStoreRequest extends FormRequest
+class WayStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,9 @@ class PointStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "point_id" => [
-                'required',
-                Rule::unique('points')->ignore($this->point)
-            ],,
-            "name" => "required",
-            'group_id' => 'required',
+            "introduction" => "required",
+            "start_point_id" => "required",
+            "end_point_id" => "required",
         ];
     }
 }

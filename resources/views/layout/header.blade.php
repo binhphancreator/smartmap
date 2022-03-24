@@ -33,8 +33,8 @@
                             Quản lý đường đi
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="">Thêm đường đi</a></li>
-                            <li><a class="dropdown-item" href="">Danh sách đường đi</a></li>
+                            <li><a class="dropdown-item" href="{{route('ways.create')}}">Thêm đường đi</a></li>
+                            <li><a class="dropdown-item" href="{{route('ways.index')}}">Danh sách đường đi</a></li>
                         </ul>
                     </div>
                     @auth

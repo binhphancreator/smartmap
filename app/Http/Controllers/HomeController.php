@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ProfileStoreRequest;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Group;
+use App\Models\Point;
+use App\Models\Way;
+use Illuminate\Http\Request;
+use Response;
 
 class HomeController extends Controller
 {
@@ -14,31 +15,16 @@ class HomeController extends Controller
         return view('page.index');
     }
 
-    public function getProfile()
-    {
-        $user = Auth::user();
-        return view('page.profile', compact('user'));
+    public function point(Request $request){
+        $point_id = $request->input('point');
+        $start_point = Point::where(['point_id' => $point_id])->first();
+        $groups = Group::all();
+        $points = Point::all();
+        return view('page.point', compact("start_point", "groups", "points"));
     }
 
-    public function updateProfile(ProfileStoreRequest $request)
-    {
-        $user = Auth::user();
-
-        User::find($user->id)->update([
-            'name' => $request->name,
-            'token' => $request->token
-        ]);
-
-        if ($request->password && $request->password_new) {
-            // return "333";
-            $check = Hash::check($request->password, $user->password);
-            if (!$check) return redirect()->route('profile.index')->with('error', "Mật khẩu không chính xác");
-            User::find($user->id)->update([
-                'password' => Hash::make($request->password_new)
-            ]);
-        }
-        // return $user;
-        return redirect()->route('profile.index')->with('success', "Cập nhật thành công");
+    public function getWay($start_point_id, $end_point_id){
+        $way = Way::where(['start_point_id' => $start_point_id, "end_point_id" => $end_point_id])->first();
+        return Response::json($way);
     }
-
 }

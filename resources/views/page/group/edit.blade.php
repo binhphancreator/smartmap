@@ -29,13 +29,13 @@
     <form action="{{ route('groups.update', [$group->id]) }}" method="POST">
       @method('PUT')
       @csrf
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label class="form-label" for="exampleInputEmail1">Mã đơn vị</label>
         <input name="group_id" type="text" class="form-control" id="exampleInputEmail1" value="{{$group->group_id}}">
         @if ($errors->first('group_id'))
         <div><small class="text-danger">{{ $errors->first('group_id') }}</small></div>
         @endif
-      </div>
+      </div> -->
       <div class="mb-3">
         <label class="form-label" for="exampleInputPassword1">Tên đơn vị</label>
         <input name="name" type="text" class="form-control" id="exampleInputPassword1" value="{{$group->name}}">

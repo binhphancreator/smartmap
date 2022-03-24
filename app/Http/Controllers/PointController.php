@@ -46,6 +46,7 @@ class PointController extends Controller
     public function store(PointStoreRequest $request)
     {
         $this->point->create([
+            'point_id' => $request->point_id,
             'name' => $request->name,
             'block' => $request->block,
             'floor' => $request->floor,
@@ -90,6 +91,7 @@ class PointController extends Controller
     public function update(PointStoreRequest $request, $id)
     {
         $point_new = [
+            'point_id' => $request->point_id,
             'name' => $request->name,
             'block' => $request->block,
             'floor' => $request->floor,

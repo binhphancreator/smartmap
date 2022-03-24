@@ -15,4 +15,9 @@ class Point extends Model
     {
         return $this->belongsTo('App\Models\Group');
     }
+
+    public function ways()
+    {
+        return $this->hasMany('App\Models\ways');
+    }
 }

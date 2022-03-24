@@ -27,13 +27,13 @@
     @endif
     <form action="{{ route('groups.store') }}" method="POST">
       @csrf
-      <div class="mb-3">
+      <!-- <div class="mb-3">
         <label class="form-label">Id đơn vị</label>
         <input name="group_id" type="text" class="form-control" value="{{old('group_id')}}">
         @if ($errors->first('group_id'))
         <div><small class="text-danger">{{ $errors->first('group_id') }}</small></div>
         @endif
-      </div>
+      </div> -->
       <div class="mb-3">
         <label class="form-label">Tên đơn vị</label>
         <input name="name" type="text" class="form-control" value="{{old('name')}}">

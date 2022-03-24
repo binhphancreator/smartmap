@@ -44,7 +44,7 @@ class GroupController extends Controller
     public function store(GroupStoreRequest $request)
     {
         $this->group->create([
-            'group_id' => $request->group_id,
+            // 'group_id' => $request->group_id,
             'name' => $request->name
         ]);
 
@@ -99,4 +99,5 @@ class GroupController extends Controller
         $group->delete();
         return redirect()->route('groups.index')->with('success', "Xoá thành công");
     }
+
 }
