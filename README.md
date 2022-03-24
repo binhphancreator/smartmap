@@ -13,6 +13,8 @@ Username: root
 Password: smartmap
 ```
 
+- To access phpmyadmin, please access addreess `http://localhost:6969`
+
 ## Install
 
 - copy file .env.example file to .env file
@@ -23,3 +25,8 @@ Password: smartmap
 - run `php artisan db:seed`
 - run `chown -R www-data:www-data storage`
 - run `composer dump-autoload`
+
+## Create new user
+
+- run `php artisan create:user {email} {username}`
+- type your password and retype it.
