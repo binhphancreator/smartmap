@@ -35,6 +35,7 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="{{route('ways.create')}}">Thêm đường đi</a></li>
                             <li><a class="dropdown-item" href="{{route('ways.index')}}">Danh sách đường đi</a></li>
+                            <li><a class="dropdown-item" href="{{route('import.ways.index')}}">Import đường đi</a></li>
                         </ul>
                     </div>
                     @auth

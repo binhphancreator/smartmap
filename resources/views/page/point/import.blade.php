@@ -4,11 +4,11 @@
 @include('layout.header')
 <section class="main-content container-lg mb-5">
   <div class="mb-3">
-    <a href="/groups">DANH SÁCH ĐƠN VỊ</a>
+    <a href="/groups">DANH SÁCH ĐỊA ĐIỂM</a>
   </div>
   <div class="p-4 border-top shadow-sm rounded-3">
     <div class="my-3 w-100">
-      <h4 class="d-flex justify-content-center">IMPORT ĐƠN VỊ</h4>
+      <h4 class="d-flex justify-content-center">IMPORT ĐỊA ĐIỂM</h4>
     </div>
     @if (session('error'))
     <div class="alert alert-danger" role="alert">
@@ -25,7 +25,7 @@
       {{ session('success') }}
     </div>
     @endif
-    <form action="{{ route('import.groups') }}" method="POST" enctype="multipart/form-data" class="mb-5 mt-4">
+    <form action="{{ route('import.points') }}" method="POST" enctype="multipart/form-data" class="mb-5 mt-4">
       @csrf
       <div class="input-group">
         <input type="file" name="file" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">

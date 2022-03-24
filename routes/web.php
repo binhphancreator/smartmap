@@ -31,9 +31,9 @@ Route::resource('groups', GroupController::class)->middleware('auth');
 Route::resource('points', PointController::class)->middleware('auth');
 Route::resource('ways', WayController::class)->middleware('auth');
 
-Route::get('/import/group', [ImportController::class, "importGroupIndex"])->middleware('auth')->name('import.group.index');
-Route::get('/import/point', [ImportController::class, "importPointIndex"])->middleware('auth')->name('import.point.index');
-Route::get('/import/way', [ImportController::class, "importWayIndex"])->middleware('auth')->name('import.way.index');
-Route::post('/import/group', [ImportController::class, "importGroup"])->middleware('auth')->name('import.group');
-Route::post('/import/point', [ImportController::class, "importPoint"])->middleware('auth')->name('import.point');
-Route::post('/import/way', [ImportController::class, "importWay"])->middleware('auth')->name('import.way');
+// Route::get('/import/group', [ImportController::class, "importGroupIndex"])->middleware('auth')->name('import.groups.index');
+// Route::get('/import/point', [ImportController::class, "importPointIndex"])->middleware('auth')->name('import.points.index');
+Route::get('/import/way', [ImportController::class, "importWayIndex"])->middleware('auth')->name('import.ways.index');
+// Route::post('/import/group', [ImportController::class, "importGroup"])->middleware('auth')->name('import.groups');
+// Route::post('/import/point', [ImportController::class, "importPoint"])->middleware('auth')->name('import.points');
+Route::post('/import/way', [ImportController::class, "importWay"])->middleware('auth')->name('import.ways');
