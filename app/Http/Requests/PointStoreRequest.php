@@ -25,10 +25,7 @@ class PointStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "point_id" => [
-                'required',
-                Rule::unique('points')->ignore($this->point)
-            ],,
+            "point_id" => "required|unique:points",
             "name" => "required",
             'group_id' => 'required',
         ];
