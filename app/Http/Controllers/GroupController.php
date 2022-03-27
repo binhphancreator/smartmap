@@ -96,8 +96,12 @@ class GroupController extends Controller
     {
 
         $group = $this->group->find($id);
-        $group->delete();
-        return redirect()->route('groups.index')->with('success', "Xoá thành công");
+
+        if (count($group->points) === 0) {
+            $group->delete();
+            return redirect()->route('groups.index')->with('success', "Xoá thành công");
+        }
+        return redirect()->route('groups.index')->with('error', "Xoá không thành công, đơn vị vẫn còn địa điểm");
     }
 
 }

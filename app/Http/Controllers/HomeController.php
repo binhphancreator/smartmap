@@ -17,7 +17,9 @@ class HomeController extends Controller
 
     public function point(Request $request){
         $point_id = $request->input('point');
+        if($point_id === null) return redirect()->route('index');
         $start_point = Point::where(['point_id' => $point_id])->first();
+        if($start_point === null) return redirect()->route('index');
         $groups = Group::all();
         $points = Point::all();
         return view('page.point', compact("start_point", "groups", "points"));

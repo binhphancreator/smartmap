@@ -18,6 +18,6 @@ class Point extends Model
 
     public function ways()
     {
-        return $this->hasMany('App\Models\ways');
+        return $this->hasMany('App\Models\Way');
     }
 }

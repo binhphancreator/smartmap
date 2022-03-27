@@ -17,7 +17,7 @@
     @endif
     @if ($errors->all())
     <div class="alert alert-danger" role="alert">
-      Tạo không thành công
+      Import không thành công
     </div>
     @endif
     @if (session('success'))

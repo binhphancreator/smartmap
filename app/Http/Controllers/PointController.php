@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PointStoreRequest;
 use App\Models\Group;
 use App\Models\Point;
+use App\Models\Way;
 use Illuminate\Support\Facades\Storage;
 
 class PointController extends Controller
@@ -114,7 +115,13 @@ class PointController extends Controller
     {
 
         $point = $this->point->find($id);
-        $point->delete();
-        return redirect()->route('points.index')->with('success', "Xoá thành công");
+
+        $waysStartPoint = Way::where("start_point_id", $id)->count();
+        $waysEndPoint = Way::where("end_point_id", $id)->count();
+        if ($waysStartPoint === 0 && $waysEndPoint ===0) {
+            $point->delete();
+            return redirect()->route('points.index')->with('success', "Xoá thành công");
+        }
+        return redirect()->route('points.index')->with('error', "Xoá không thành công, địa điểm vẫn còn đường đi");
     }
 }

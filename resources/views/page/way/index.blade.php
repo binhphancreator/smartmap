@@ -34,6 +34,7 @@
       </thead>
       <tbody>
         @foreach ($ways as $way)
+        @if($way->endPoint && $way->startPoint)
         <tr>
           <th style="vertical-align: middle;" scope="row">{{$loop->index + 1 }}</th>
           <td style="vertical-align: middle;">{{$way->startPoint->name}}</td>
@@ -68,6 +69,7 @@
             </div>
           </td>
         </tr>
+        @endif
         @endforeach
       </tbody>
     </table>
